@@ -244,6 +244,11 @@
         <form id="aiForm" action="https://formspree.io/f/maqvkpwz" method="POST">
 
           <div class="field">
+            <label for="podjetje">Podjetje:</label>
+            <input type="text" id="podjetje" name="podjetje" placeholder="Ime podjetja..." required />
+          </div>
+
+          <div class="field">
             <label for="oddelek">1. Sem iz oddelka:</label>
             <input type="text" id="oddelek" name="oddelek" placeholder="npr. Marketing, Prodaja, Finance..." required />
           </div>
@@ -266,6 +271,11 @@
           <div class="field">
             <label for="pomoc">5. Za izvedbo potrebujem pomoč pri:</label>
             <textarea id="pomoc" name="pomoc" placeholder="Kje potrebuješ podporo?"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="vase.ime@podjetje.si" required />
           </div>
 
           <button type="submit" class="btn-submit">Oddaj načrt →</button>
