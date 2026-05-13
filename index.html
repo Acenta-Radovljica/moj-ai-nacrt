@@ -143,39 +143,12 @@
     }
 
     .sidebar-item {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 20px;
-      align-items: flex-start;
-    }
-
-    .sidebar-num {
-      background: #e91e8c;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 800;
-      width: 22px;
-      height: 22px;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .sidebar-title {
-      color: #e91e8c;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 4px;
-      line-height: 1.3;
-    }
-
-    .sidebar-desc {
       color: #ccc;
-      font-size: 12px;
-      line-height: 1.5;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      padding-left: 14px;
+      border-left: 2px solid #00b894;
     }
 
     /* Thank you screen */
@@ -265,20 +238,12 @@
       </div>
 
       <div class="sidebar">
-        <h3>Po delavnici boste imeli:</h3>
-        <ul>
-          <li>5 promptov za jutri</li>
-          <li>Odprt Claude račun</li>
-          <li>Konkretne ideje</li>
-          <li>Jasen AI načrt</li>
-          <li>Stik z Acenta ekipo</li>
-        </ul>
-        <div class="qr-block">
-          <img src="data:image/png;base64,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" alt="QR koda" />
-          <p>nacrt.deploy.acenta.si</p>
-        </div>
+        <p class="sidebar-item">Skupaj analiziramo vaše procese in ustvarimo knjižnico promptov po meri za vsak oddelek.</p>
+        <p class="sidebar-item">Sproti uvedemo nova orodja, optimiziramo obstoječe rešitve in usposabljamo ekipo v živo.</p>
+        <p class="sidebar-item">Ustvarimo prilagojenega AI asistenta z vašim glasom, cenami, FAQ in procedurami.</p>
       </div>
     </div>
+  </div>
   </div>
 
   <div class="thankyou" id="thankyouView">
