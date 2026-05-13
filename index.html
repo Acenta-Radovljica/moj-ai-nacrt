@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moj AI načrt — Acenta</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f4f4f4;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 860px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .header {
+      padding: 28px 36px 0 36px;
+    }
+
+    .blok-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #00b894;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .logo {
+      float: right;
+      font-weight: 800;
+      font-size: 18px;
+      color: #1a1a2e;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #00b894;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+      clear: both;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 28px;
+    }
+
+    /* Body */
+    .body {
+      display: flex;
+      gap: 0;
+    }
+
+    .form-area {
+      flex: 1;
+      padding: 0 36px 36px 36px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #1a1a2e;
+      font-family: inherit;
+      resize: vertical;
+      transition: border-color 0.2s;
+      background: #fafafa;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: #00b894;
+      background: #fff;
+    }
+
+    .field textarea {
+      height: 70px;
+    }
+
+    .btn-submit {
+      background: #00b894;
+      color: #fff;
+      border: none;
+      padding: 13px 32px;
+      border-radius: 7px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 4px;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: #009e7d;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #1a1a2e;
+      padding: 32px 24px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .sidebar h3 {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar ul li {
+      color: #ccc;
+      font-size: 13px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+
+    .sidebar ul li::before {
+      content: '✓';
+      color: #00b894;
+      font-weight: 800;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 0px;
+    }
+
+    /* Thank you screen */
+    .thankyou {
+      display: none;
+      text-align: center;
+      padding: 60px 40px;
+    }
+
+    .thankyou .check {
+      font-size: 56px;
+      margin-bottom: 16px;
+    }
+
+    .thankyou h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 10px;
+    }
+
+    .thankyou p {
+      color: #666;
+      font-size: 15px;
+    }
+
+    @media (max-width: 620px) {
+      .body { flex-direction: column; }
+      .sidebar { width: 100%; padding: 24px 28px; }
+      h1 { font-size: 28px; }
+      .header { padding: 22px 22px 0 22px; }
+      .form-area { padding: 0 22px 28px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div id="formView">
+    <div class="header">
+      <div class="logo">A<span>centa</span></div>
+      <div class="blok-label">Blok 6 &nbsp;·&nbsp; 12:45–13:15</div>
+      <h1>Moj AI načrt</h1>
+      <p class="subtitle">Vsak udeleženec izpolni svojo predlogo — 15 minut, individualno</p>
+    </div>
+
+    <div class="body">
+      <div class="form-area">
+        <form id="aiForm" action="https://formspree.io/f/maqvkpwz" method="POST">
+
+          <div class="field">
+            <label for="oddelek">1. Sem iz oddelka:</label>
+            <input type="text" id="oddelek" name="oddelek" placeholder="npr. Marketing, Prodaja, Finance..." required />
+          </div>
+
+          <div class="field">
+            <label for="naloge">2. Naloge, ki jih ponavljam vsak teden:</label>
+            <textarea id="naloge" name="naloge" placeholder="Opiši naloge, ki jih delaš redno..." required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="proces1">3. Proces, ki bi ga rad avtomatiziral — #1:</label>
+            <textarea id="proces1" name="proces1" placeholder="Kateri proces vzame največ časa?" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="proces2">4. Proces, ki bi ga rad avtomatiziral — #2:</label>
+            <textarea id="proces2" name="proces2" placeholder="Še en proces, ki bi ga poenostavil..."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="pomoc">5. Za izvedbo potrebujem pomoč pri:</label>
+            <textarea id="pomoc" name="pomoc" placeholder="Kje potrebuješ podporo?"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Oddaj načrt →</button>
+        </form>
+      </div>
+
+      <div class="sidebar">
+        <h3>Po delavnici boste imeli:</h3>
+        <ul>
+          <li>5 promptov za jutri</li>
+          <li>Odprt Claude račun</li>
+          <li>Konkretne ideje</li>
+          <li>Jasen AI načrt</li>
+          <li>Stik z Acenta ekipo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="thankyou" id="thankyouView">
+    <div class="check">✅</div>
+    <h2>Načrt oddan!</h2>
+    <p>Hvala. Acenta ekipa vas bo kontaktirala z vašim osebnim AI načrtom.</p>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('aiForm');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      document.getElementById('formView').style.display = 'none';
+      document.getElementById('thankyouView').style.display = 'block';
+    } else {
+      alert('Napaka pri pošiljanju. Prosim poskusite znova.');
+    }
+  });
+</script>
+
+</body>
+</html>
